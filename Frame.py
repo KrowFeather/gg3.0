@@ -2,7 +2,7 @@ import os
 import sys
 import time
 
-from PySide6.QtCore import Qt, QUrl
+from PySide6.QtCore import Qt, QUrl, QPropertyAnimation
 from PySide6.QtGui import QPixmap, QImage, QGuiApplication
 from PySide6.QtWidgets import QWidget, QApplication, QTableWidgetItem, QHeaderView
 from generator_ui import Ui_Form
@@ -14,12 +14,15 @@ import Kernel.GraphUtils as Utils
 import Kernel.DrawChart as DC
 import Kernel.PageRank as PG
 import Kernel.Algorithms as Algo
+import multiprocessing
 from qt_material import apply_stylesheet
 
 
-class Frame(QWidget, Ui_Form):
+class Frame(QWidget, Ui_Form, multiprocessing.Process):
     def __init__(self):
         super().__init__()
+        self.footerAnima = None
+        self.sidebarAnima = None
         self.setupUi(self)
         self.setWindowTitle("Graph Generator")
         self.screen = QGuiApplication.primaryScreen().geometry()
@@ -39,6 +42,7 @@ class Frame(QWidget, Ui_Form):
         self.PR_tableIndex = 0
         self.view.setAlignment(Qt.AlignCenter)
         self.btn_UDG.setChecked(True)
+        self.tabWidget.setCurrentIndex(0)
         self.edgelistframe.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
         self.matrixTable.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
         self.PRtable.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
@@ -48,6 +52,9 @@ class Frame(QWidget, Ui_Form):
         self.DAGgen = DAG.DAGgenerator()
         self.pageR = PG.PageRank()
         self.Xwriter = xlsx_writer.XlsxWriter()
+        self.cur = 1
+        self.footer.setStyleSheet("QWidget{border-top:1px solid gray;}")
+        self.progressBar.setStyleSheet("QProgressBar{border:none;}")
         self.setStyleSheet("QWidget {background-color:white;}")
         self.edgelistframe.setStyleSheet(
             "QHeaderView::section {background-color:white; border-color: darkgray;color: black;}")
@@ -69,6 +76,7 @@ class Frame(QWidget, Ui_Form):
         self.btn_exit.clicked.connect(lambda: self.exit())
         self.btn_runSP.clicked.connect(lambda: self.runSPFA())
         self.btn_nw.clicked.connect(lambda: self.turnNeg())
+        self.tabWidget.currentChanged['int'].connect(self.sideBarChange)
 
     def generate(self):
         self.clearPRTable()
@@ -333,11 +341,84 @@ class Frame(QWidget, Ui_Form):
         if os.path.exists('./temp/plotly_bar4.html'):
             os.remove('./temp/plotly_bar4.html')
 
+    def sideBarChange(self, index):
+        match index:
+            case 0:
+                self.footerAnim(0)
+                self.sideBarAnim(0)
+                self.cur = 1
+            case 1:
+                self.footerAnim(0)
+                self.sideBarAnim(0)
+                self.cur = 1
+            case 2:
+                self.footerAnim(0)
+                self.sideBarAnim(0)
+                self.cur = 1
+            case 3:
+                self.footerAnim(0)
+                self.sideBarAnim(0)
+                self.cur = 1
+            case 4:
+                self.footerAnim(1)
+                self.sideBarAnim(1)
+                self.cur = 0
+            case _:
+                self.footerAnim(0)
+                self.sideBarAnim(0)
+                self.cur = 1
+
+    def sideBarAnim(self, val):
+        if val == 1:
+            if self.cur == 0:
+                return
+            self.sidebarAnima = QPropertyAnimation(self.sideBar, b"maximumWidth")
+            self.sidebarAnima.setDuration(300)
+            self.sidebarAnima.setStartValue(220)
+            self.sidebarAnima.setEndValue(0)
+            self.sidebarAnima.start()
+        else:
+            if self.cur == 1:
+                return
+            self.sidebarAnima = QPropertyAnimation(self.sideBar, b"maximumWidth")
+            self.sidebarAnima.setDuration(300)
+            self.sidebarAnima.setStartValue(0)
+            self.sidebarAnima.setEndValue(220)
+            self.sidebarAnima.start()
+
+    def footerAnim(self, val):
+        if val == 1:
+            if self.cur == 0:
+                return
+            self.footerAnima = QPropertyAnimation(self.footer, b"maximumHeight")
+            self.footerAnima.setDuration(300)
+            self.footerAnima.setStartValue(42)  # 大小100*100
+            self.footerAnima.setEndValue(0)  # 大小200*200
+            self.footerAnima.start()
+        else:
+            if self.cur == 1:
+                return
+            self.footerAnima = QPropertyAnimation(self.footer, b"maximumHeight")
+            self.footerAnima.setDuration(300)
+            self.footerAnima.setStartValue(0)  # 大小100*100
+            self.footerAnima.setEndValue(42)  # 大小200*200
+            self.footerAnima.start()
+
 
 def run():
-    os.system('neolauncher.bat')
     app = QApplication([])
     apply_stylesheet(app, theme='light_blue.xml')
     window = Frame()
     window.show()
     sys.exit(app.exec_())
+
+
+def NeoRun():
+    os.system('neolauncher.bat')
+
+
+def launch():
+    frame = multiprocessing.Process(target=run)
+    neoRun = multiprocessing.Process(target=NeoRun)
+    frame.start()
+    neoRun.start()

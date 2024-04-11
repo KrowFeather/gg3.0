@@ -17,10 +17,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import (QApplication, QCheckBox, QDockWidget, QFrame,
-    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
-    QLabel, QLineEdit, QProgressBar, QPushButton,
-    QRadioButton, QSizePolicy, QSpacerItem, QTabWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QProgressBar, QPushButton, QRadioButton,
+    QSizePolicy, QSpacerItem, QTabWidget, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -31,14 +31,14 @@ class Ui_Form(object):
         Form.setMaximumSize(QSize(14214, 135135))
         self.horizontalLayout_8 = QHBoxLayout(Form)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.frame = QFrame(Form)
-        self.frame.setObjectName(u"frame")
-        self.frame.setMaximumSize(QSize(220, 16777215))
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_2 = QVBoxLayout(self.frame)
+        self.sideBar = QFrame(Form)
+        self.sideBar.setObjectName(u"sideBar")
+        self.sideBar.setMaximumSize(QSize(220, 16777215))
+        self.sideBar.setFrameShape(QFrame.StyledPanel)
+        self.sideBar.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_2 = QVBoxLayout(self.sideBar)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.groupBox = QGroupBox(self.frame)
+        self.groupBox = QGroupBox(self.sideBar)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setMinimumSize(QSize(200, 2))
         self.groupBox.setMaximumSize(QSize(200, 16777215))
@@ -66,7 +66,7 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
-        self.widget = QWidget(self.frame)
+        self.widget = QWidget(self.sideBar)
         self.widget.setObjectName(u"widget")
         self.verticalLayout_3 = QVBoxLayout(self.widget)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -105,7 +105,7 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addWidget(self.widget)
 
-        self.widget_2 = QWidget(self.frame)
+        self.widget_2 = QWidget(self.sideBar)
         self.widget_2.setObjectName(u"widget_2")
         self.verticalLayout_4 = QVBoxLayout(self.widget_2)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
@@ -166,7 +166,7 @@ class Ui_Form(object):
         self.verticalLayout_2.addWidget(self.widget_2)
 
 
-        self.horizontalLayout_8.addWidget(self.frame)
+        self.horizontalLayout_8.addWidget(self.sideBar)
 
         self.line = QFrame(Form)
         self.line.setObjectName(u"line")
@@ -182,11 +182,11 @@ class Ui_Form(object):
         self.tabWidget = QTabWidget(Form)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setMinimumSize(QSize(0, 0))
-        self.tab = QWidget()
-        self.tab.setObjectName(u"tab")
-        self.horizontalLayout_10 = QHBoxLayout(self.tab)
+        self.Gtab = QWidget()
+        self.Gtab.setObjectName(u"Gtab")
+        self.horizontalLayout_10 = QHBoxLayout(self.Gtab)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.widget_4 = QWidget(self.tab)
+        self.widget_4 = QWidget(self.Gtab)
         self.widget_4.setObjectName(u"widget_4")
         self.verticalLayout_7 = QVBoxLayout(self.widget_4)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
@@ -206,7 +206,7 @@ class Ui_Form(object):
 
         self.horizontalLayout_10.addWidget(self.widget_4)
 
-        self.dockWidget = QDockWidget(self.tab)
+        self.dockWidget = QDockWidget(self.Gtab)
         self.dockWidget.setObjectName(u"dockWidget")
         self.dockWidget.setMaximumSize(QSize(450, 524287))
         self.dockWidgetContents = QWidget()
@@ -238,22 +238,22 @@ class Ui_Form(object):
 
         self.horizontalLayout_10.addWidget(self.dockWidget)
 
-        self.tabWidget.addTab(self.tab, "")
-        self.tab_2 = QWidget()
-        self.tab_2.setObjectName(u"tab_2")
-        self.horizontalLayout_2 = QHBoxLayout(self.tab_2)
+        self.tabWidget.addTab(self.Gtab, "")
+        self.Matrixtab = QWidget()
+        self.Matrixtab.setObjectName(u"Matrixtab")
+        self.horizontalLayout_2 = QHBoxLayout(self.Matrixtab)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.matrixTable = QTableWidget(self.tab_2)
+        self.matrixTable = QTableWidget(self.Matrixtab)
         self.matrixTable.setObjectName(u"matrixTable")
 
         self.horizontalLayout_2.addWidget(self.matrixTable)
 
-        self.tabWidget.addTab(self.tab_2, "")
-        self.tab_3 = QWidget()
-        self.tab_3.setObjectName(u"tab_3")
-        self.horizontalLayout_5 = QHBoxLayout(self.tab_3)
+        self.tabWidget.addTab(self.Matrixtab, "")
+        self.SPtab = QWidget()
+        self.SPtab.setObjectName(u"SPtab")
+        self.horizontalLayout_5 = QHBoxLayout(self.SPtab)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.tabWidget_2 = QTabWidget(self.tab_3)
+        self.tabWidget_2 = QTabWidget(self.SPtab)
         self.tabWidget_2.setObjectName(u"tabWidget_2")
         self.tab_5 = QWidget()
         self.tab_5.setObjectName(u"tab_5")
@@ -356,12 +356,12 @@ class Ui_Form(object):
 
         self.horizontalLayout_5.addWidget(self.tabWidget_2)
 
-        self.tabWidget.addTab(self.tab_3, "")
-        self.tab_4 = QWidget()
-        self.tab_4.setObjectName(u"tab_4")
-        self.horizontalLayout_12 = QHBoxLayout(self.tab_4)
+        self.tabWidget.addTab(self.SPtab, "")
+        self.PRtab = QWidget()
+        self.PRtab.setObjectName(u"PRtab")
+        self.horizontalLayout_12 = QHBoxLayout(self.PRtab)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.widget_9 = QWidget(self.tab_4)
+        self.widget_9 = QWidget(self.PRtab)
         self.widget_9.setObjectName(u"widget_9")
         self.verticalLayout_13 = QVBoxLayout(self.widget_9)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
@@ -380,7 +380,7 @@ class Ui_Form(object):
 
         self.horizontalLayout_12.addWidget(self.widget_9)
 
-        self.dockWidget_3 = QDockWidget(self.tab_4)
+        self.dockWidget_3 = QDockWidget(self.PRtab)
         self.dockWidget_3.setObjectName(u"dockWidget_3")
         self.dockWidget_3.setMaximumSize(QSize(524287, 524287))
         self.dockWidgetContents_3 = QWidget()
@@ -399,25 +399,13 @@ class Ui_Form(object):
 
         self.horizontalLayout_12.addWidget(self.dockWidget_3)
 
-        self.tabWidget.addTab(self.tab_4, "")
-        self.tab_7 = QWidget()
-        self.tab_7.setObjectName(u"tab_7")
-        self.horizontalLayout_14 = QHBoxLayout(self.tab_7)
+        self.tabWidget.addTab(self.PRtab, "")
+        self.KGtab = QWidget()
+        self.KGtab.setObjectName(u"KGtab")
+        self.horizontalLayout_14 = QHBoxLayout(self.KGtab)
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.mask = QWidget(self.tab_7)
-        self.mask.setObjectName(u"mask")
-        self.gridLayout = QGridLayout(self.mask)
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.pushButton = QPushButton(self.mask)
-        self.pushButton.setObjectName(u"pushButton")
-
-        self.gridLayout.addWidget(self.pushButton, 0, 0, 1, 1)
-
-
-        self.horizontalLayout_14.addWidget(self.mask)
-
-        self.tabWidget_3 = QTabWidget(self.tab_7)
-        self.tabWidget_3.setObjectName(u"tabWidget_3")
+        self.KGtabs = QTabWidget(self.KGtab)
+        self.KGtabs.setObjectName(u"KGtabs")
         self.tab_8 = QWidget()
         self.tab_8.setObjectName(u"tab_8")
         self.horizontalLayout_15 = QHBoxLayout(self.tab_8)
@@ -428,26 +416,26 @@ class Ui_Form(object):
 
         self.horizontalLayout_15.addWidget(self.webEngineView)
 
-        self.tabWidget_3.addTab(self.tab_8, "")
+        self.KGtabs.addTab(self.tab_8, "")
         self.tab_9 = QWidget()
         self.tab_9.setObjectName(u"tab_9")
-        self.tabWidget_3.addTab(self.tab_9, "")
+        self.KGtabs.addTab(self.tab_9, "")
 
-        self.horizontalLayout_14.addWidget(self.tabWidget_3)
+        self.horizontalLayout_14.addWidget(self.KGtabs)
 
-        self.tabWidget.addTab(self.tab_7, "")
+        self.tabWidget.addTab(self.KGtab, "")
 
         self.verticalLayout_5.addWidget(self.tabWidget)
 
-        self.widget_6 = QWidget(Form)
-        self.widget_6.setObjectName(u"widget_6")
-        self.horizontalLayout_6 = QHBoxLayout(self.widget_6)
+        self.footer = QWidget(Form)
+        self.footer.setObjectName(u"footer")
+        self.horizontalLayout_6 = QHBoxLayout(self.footer)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_2)
 
-        self.progressBar = QProgressBar(self.widget_6)
+        self.progressBar = QProgressBar(self.footer)
         self.progressBar.setObjectName(u"progressBar")
         self.progressBar.setMaximumSize(QSize(300, 20))
         self.progressBar.setValue(24)
@@ -455,7 +443,7 @@ class Ui_Form(object):
         self.horizontalLayout_6.addWidget(self.progressBar)
 
 
-        self.verticalLayout_5.addWidget(self.widget_6)
+        self.verticalLayout_5.addWidget(self.footer)
 
 
         self.horizontalLayout_7.addLayout(self.verticalLayout_5)
@@ -466,8 +454,9 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.tabWidget.setCurrentIndex(4)
-        self.tabWidget_2.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget_2.setCurrentIndex(1)
+        self.KGtabs.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -490,18 +479,17 @@ class Ui_Form(object):
         self.label_3.setText(QCoreApplication.translate("Form", u"Graph Palette >", None))
         self.view.setText("")
         self.label_4.setText(QCoreApplication.translate("Form", u"Edge Table >", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Form", u"Graph", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Form", u"Matrix", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Gtab), QCoreApplication.translate("Form", u"Graph", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Matrixtab), QCoreApplication.translate("Form", u"Matrix", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_5), QCoreApplication.translate("Form", u"Floyd (Multi-sources)", None))
         self.btn_runSP.setText(QCoreApplication.translate("Form", u"run", None))
         self.SPFAview.setText("")
         self.SPFAreport.setText("")
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_6), QCoreApplication.translate("Form", u"SPFA(Single-source)", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("Form", u"ShortestPath", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("Form", u"PageRank", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"Launch", None))
-        self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_8), QCoreApplication.translate("Form", u"Tab 1", None))
-        self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_9), QCoreApplication.translate("Form", u"Tab 2", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7), QCoreApplication.translate("Form", u"KnowledgeGraph", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.SPtab), QCoreApplication.translate("Form", u"ShortestPath", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.PRtab), QCoreApplication.translate("Form", u"PageRank", None))
+        self.KGtabs.setTabText(self.KGtabs.indexOf(self.tab_8), QCoreApplication.translate("Form", u"Character relationship", None))
+        self.KGtabs.setTabText(self.KGtabs.indexOf(self.tab_9), QCoreApplication.translate("Form", u"Paper citation data", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.KGtab), QCoreApplication.translate("Form", u"KnowledgeGraph", None))
     # retranslateUi
 
