@@ -7,10 +7,10 @@ class DrawChart:
 
     # 绘制散点图
     @staticmethod
-    def drawScatter(x_coordinate, y_coordinate, id, data=None):
+    def drawScatter(x_coordinate, y_coordinate, id, data=None, font_size=1):
         line = px.scatter(x=x_coordinate, y=y_coordinate, labels={'x': 'ord', 'y': 'PR'}, text=data)
         fig = go.Figure(line)
-        fig.update_traces(textposition='top center', textfont_size=1)
+        fig.update_traces(textposition='top center', textfont_size=font_size)
         fig.write_html(f"./temp/plotly_scatter{id}.html")
 
     # 绘制柱状图

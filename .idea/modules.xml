@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gg3.0.iml" filepath="$PROJECT_DIR$/.idea/gg3.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Graph_Generator.iml" filepath="$PROJECT_DIR$/.idea/Graph_Generator.iml" />
     </modules>
   </component>
 </project>

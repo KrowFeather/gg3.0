@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'generator_ui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -17,10 +17,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import (QApplication, QCheckBox, QDockWidget, QFrame,
-    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
-    QLineEdit, QProgressBar, QPushButton, QRadioButton,
-    QSizePolicy, QSpacerItem, QTabWidget, QTableWidget,
-    QTableWidgetItem, QVBoxLayout, QWidget)
+    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
+    QLabel, QLineEdit, QProgressBar, QPushButton,
+    QRadioButton, QSizePolicy, QSpacerItem, QTabWidget,
+    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -170,8 +170,8 @@ class Ui_Form(object):
 
         self.line = QFrame(Form)
         self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.Shape.VLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+        self.line.setFrameShape(QFrame.VLine)
+        self.line.setFrameShadow(QFrame.Sunken)
 
         self.horizontalLayout_8.addWidget(self.line)
 
@@ -272,7 +272,7 @@ class Ui_Form(object):
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.FloydStatistic = QWebEngineView(self.dockWidgetContents_4)
         self.FloydStatistic.setObjectName(u"FloydStatistic")
-        self.FloydStatistic.setProperty("url", QUrl(u"about:blank"))
+        self.FloydStatistic.setUrl(QUrl(u"about:blank"))
 
         self.verticalLayout_14.addWidget(self.FloydStatistic)
 
@@ -341,7 +341,7 @@ class Ui_Form(object):
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.SPFAStatistic = QWebEngineView(self.dockWidgetContents_2)
         self.SPFAStatistic.setObjectName(u"SPFAStatistic")
-        self.SPFAStatistic.setProperty("url", QUrl(u"about:blank"))
+        self.SPFAStatistic.setUrl(QUrl(u"about:blank"))
 
         self.verticalLayout_11.addWidget(self.SPFAStatistic)
 
@@ -368,7 +368,7 @@ class Ui_Form(object):
         self.webEngineView_3 = QWebEngineView(self.widget_9)
         self.webEngineView_3.setObjectName(u"webEngineView_3")
         self.webEngineView_3.setMinimumSize(QSize(650, 450))
-        self.webEngineView_3.setProperty("url", QUrl(u"about:blank"))
+        self.webEngineView_3.setUrl(QUrl(u"about:blank"))
 
         self.verticalLayout_13.addWidget(self.webEngineView_3)
 
@@ -391,7 +391,7 @@ class Ui_Form(object):
         self.PRStatistic.setObjectName(u"PRStatistic")
         self.PRStatistic.setMaximumSize(QSize(16777215, 16777215))
         self.PRStatistic.setBaseSize(QSize(400, 0))
-        self.PRStatistic.setProperty("url", QUrl(u"about:blank"))
+        self.PRStatistic.setUrl(QUrl(u"about:blank"))
 
         self.verticalLayout_12.addWidget(self.PRStatistic)
 
@@ -404,6 +404,51 @@ class Ui_Form(object):
         self.KGtab.setObjectName(u"KGtab")
         self.horizontalLayout_14 = QHBoxLayout(self.KGtab)
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.HLmask = QWidget(self.KGtab)
+        self.HLmask.setObjectName(u"HLmask")
+        self.gridLayout = QGridLayout(self.HLmask)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.HLMmaskinmask = QWidget(self.HLmask)
+        self.HLMmaskinmask.setObjectName(u"HLMmaskinmask")
+        self.verticalLayout_15 = QVBoxLayout(self.HLMmaskinmask)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_15.addItem(self.verticalSpacer_2)
+
+        self.loadingLabel = QLabel(self.HLMmaskinmask)
+        self.loadingLabel.setObjectName(u"loadingLabel")
+        self.loadingLabel.setMaximumSize(QSize(16777215, 30))
+        self.loadingLabel.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_15.addWidget(self.loadingLabel)
+
+        self.HLMprogressbar = QProgressBar(self.HLMmaskinmask)
+        self.HLMprogressbar.setObjectName(u"HLMprogressbar")
+        self.HLMprogressbar.setMaximumSize(QSize(16777215, 16777215))
+        self.HLMprogressbar.setValue(24)
+        self.HLMprogressbar.setAlignment(Qt.AlignCenter)
+        self.HLMprogressbar.setTextDirection(QProgressBar.TopToBottom)
+
+        self.verticalLayout_15.addWidget(self.HLMprogressbar)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_15.addItem(self.verticalSpacer_3)
+
+
+        self.gridLayout.addWidget(self.HLMmaskinmask, 1, 0, 1, 1)
+
+        self.btn_activHLM = QPushButton(self.HLmask)
+        self.btn_activHLM.setObjectName(u"btn_activHLM")
+        self.btn_activHLM.setMaximumSize(QSize(200, 100))
+        self.btn_activHLM.setLayoutDirection(Qt.LeftToRight)
+
+        self.gridLayout.addWidget(self.btn_activHLM, 0, 0, 1, 1)
+
+
+        self.horizontalLayout_14.addWidget(self.HLmask)
+
         self.KGtabs = QTabWidget(self.KGtab)
         self.KGtabs.setObjectName(u"KGtabs")
         self.tab_8 = QWidget()
@@ -412,18 +457,107 @@ class Ui_Form(object):
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.webEngineView = QWebEngineView(self.tab_8)
         self.webEngineView.setObjectName(u"webEngineView")
-        self.webEngineView.setProperty("url", QUrl(u"about:blank"))
+        self.webEngineView.setUrl(QUrl(u"about:blank"))
 
         self.horizontalLayout_15.addWidget(self.webEngineView)
 
         self.KGtabs.addTab(self.tab_8, "")
-        self.tab_9 = QWidget()
-        self.tab_9.setObjectName(u"tab_9")
-        self.KGtabs.addTab(self.tab_9, "")
+        self.wordCloudsTable = QWidget()
+        self.wordCloudsTable.setObjectName(u"wordCloudsTable")
+        self.horizontalLayout_17 = QHBoxLayout(self.wordCloudsTable)
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.wcLabel = QLabel(self.wordCloudsTable)
+        self.wcLabel.setObjectName(u"wcLabel")
+        self.wcLabel.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_17.addWidget(self.wcLabel)
+
+        self.KGtabs.addTab(self.wordCloudsTable, "")
 
         self.horizontalLayout_14.addWidget(self.KGtabs)
 
         self.tabWidget.addTab(self.KGtab, "")
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.horizontalLayout_16 = QHBoxLayout(self.tab)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.PaperMask = QWidget(self.tab)
+        self.PaperMask.setObjectName(u"PaperMask")
+        self.gridLayout_2 = QGridLayout(self.PaperMask)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.btn_activPaper = QPushButton(self.PaperMask)
+        self.btn_activPaper.setObjectName(u"btn_activPaper")
+        self.btn_activPaper.setMaximumSize(QSize(200, 100))
+        self.btn_activPaper.setLayoutDirection(Qt.LeftToRight)
+
+        self.gridLayout_2.addWidget(self.btn_activPaper, 0, 0, 1, 1)
+
+        self.papermaskinmask = QWidget(self.PaperMask)
+        self.papermaskinmask.setObjectName(u"papermaskinmask")
+        self.verticalLayout_17 = QVBoxLayout(self.papermaskinmask)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_17.addItem(self.verticalSpacer_4)
+
+        self.Paperlabel = QLabel(self.papermaskinmask)
+        self.Paperlabel.setObjectName(u"Paperlabel")
+        self.Paperlabel.setMaximumSize(QSize(16777215, 30))
+        self.Paperlabel.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_17.addWidget(self.Paperlabel)
+
+        self.PaperprogressBar = QProgressBar(self.papermaskinmask)
+        self.PaperprogressBar.setObjectName(u"PaperprogressBar")
+        self.PaperprogressBar.setValue(24)
+
+        self.verticalLayout_17.addWidget(self.PaperprogressBar)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 231, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_17.addItem(self.verticalSpacer_5)
+
+
+        self.gridLayout_2.addWidget(self.papermaskinmask, 1, 0, 1, 1)
+
+
+        self.horizontalLayout_16.addWidget(self.PaperMask)
+
+        self.PaperTable = QTabWidget(self.tab)
+        self.PaperTable.setObjectName(u"PaperTable")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.horizontalLayout_18 = QHBoxLayout(self.tab_2)
+        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
+        self.PaperKGView = QWebEngineView(self.tab_2)
+        self.PaperKGView.setObjectName(u"PaperKGView")
+        self.PaperKGView.setUrl(QUrl(u"about:blank"))
+
+        self.horizontalLayout_18.addWidget(self.PaperKGView)
+
+        self.PaperTable.addTab(self.tab_2, "")
+        self.tab_3 = QWidget()
+        self.tab_3.setObjectName(u"tab_3")
+        self.horizontalLayout_19 = QHBoxLayout(self.tab_3)
+        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.PaperScatterView = QWebEngineView(self.tab_3)
+        self.PaperScatterView.setObjectName(u"PaperScatterView")
+        self.PaperScatterView.setMinimumSize(QSize(700, 0))
+        self.PaperScatterView.setUrl(QUrl(u"about:blank"))
+
+        self.horizontalLayout_19.addWidget(self.PaperScatterView)
+
+        self.PageRankView = QTableWidget(self.tab_3)
+        self.PageRankView.setObjectName(u"PageRankView")
+        self.PageRankView.setMaximumSize(QSize(600, 16777215))
+
+        self.horizontalLayout_19.addWidget(self.PageRankView)
+
+        self.PaperTable.addTab(self.tab_3, "")
+
+        self.horizontalLayout_16.addWidget(self.PaperTable)
+
+        self.tabWidget.addTab(self.tab, "")
 
         self.verticalLayout_5.addWidget(self.tabWidget)
 
@@ -454,9 +588,10 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(5)
         self.tabWidget_2.setCurrentIndex(1)
         self.KGtabs.setCurrentIndex(1)
+        self.PaperTable.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -488,8 +623,16 @@ class Ui_Form(object):
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_6), QCoreApplication.translate("Form", u"SPFA(Single-source)", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.SPtab), QCoreApplication.translate("Form", u"ShortestPath", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.PRtab), QCoreApplication.translate("Form", u"PageRank", None))
-        self.KGtabs.setTabText(self.KGtabs.indexOf(self.tab_8), QCoreApplication.translate("Form", u"Character relationship", None))
-        self.KGtabs.setTabText(self.KGtabs.indexOf(self.tab_9), QCoreApplication.translate("Form", u"Paper citation data", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.KGtab), QCoreApplication.translate("Form", u"KnowledgeGraph", None))
+        self.loadingLabel.setText(QCoreApplication.translate("Form", u"TextLabel", None))
+        self.btn_activHLM.setText(QCoreApplication.translate("Form", u"Activate", None))
+        self.KGtabs.setTabText(self.KGtabs.indexOf(self.tab_8), QCoreApplication.translate("Form", u"Knowledge Graph", None))
+        self.wcLabel.setText("")
+        self.KGtabs.setTabText(self.KGtabs.indexOf(self.wordCloudsTable), QCoreApplication.translate("Form", u"Word Cloud", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.KGtab), QCoreApplication.translate("Form", u"HLM Analysis", None))
+        self.btn_activPaper.setText(QCoreApplication.translate("Form", u"Activate", None))
+        self.Paperlabel.setText(QCoreApplication.translate("Form", u"TextLabel", None))
+        self.PaperTable.setTabText(self.PaperTable.indexOf(self.tab_2), QCoreApplication.translate("Form", u"Knowledge Graph", None))
+        self.PaperTable.setTabText(self.PaperTable.indexOf(self.tab_3), QCoreApplication.translate("Form", u"Pagerank", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Form", u"Paper Analysis", None))
     # retranslateUi
 
