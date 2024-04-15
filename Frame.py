@@ -55,6 +55,7 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
         self.PR_tableIndex = 0
         self.PaperPR_tableIndex = 0
         self.view.setAlignment(Qt.AlignCenter)
+        self.relationView.setAlignment(Qt.AlignCenter)
         self.btn_UDG.setChecked(True)
         self.tabWidget.setCurrentIndex(0)
         self.tabWidget_2.setCurrentIndex(0)
@@ -80,6 +81,7 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
         self.footer.setStyleSheet("QWidget{border-top:1px solid gray;}")
         self.progressBar.setStyleSheet("QProgressBar{border:none;}")
         self.setStyleSheet("QWidget {background-color:white;}")
+        self.bindComboBox()
         self.edgelistframe.setStyleSheet(
             "QHeaderView::section {background-color:white; border-color: darkgray;color: black;}")
         self.matrixTable.setStyleSheet(
@@ -107,6 +109,7 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
         self.btn_activHLM.clicked.connect(lambda: self.activateHLM())
         self.btn_activPaper.clicked.connect(lambda: self.activatePaper())
         self.tabWidget.currentChanged['int'].connect(self.sideBarChange)
+        self.btn_search.clicked.connect(lambda: self.showRelationship())
 
     def generate(self):
         self.clearPRTable()
@@ -546,6 +549,21 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
             self.PageRankView.setItem(self.PaperPR_tableIndex, 0, QTableWidgetItem(str(finaldata[i])))
             self.PageRankView.setItem(self.PaperPR_tableIndex, 1, QTableWidgetItem(str(rpv[i][2])))
             self.PaperPR_tableIndex += 1
+
+    def bindComboBox(self):
+        dirname = os.listdir('./CharactersImages')
+        for filename in dirname:
+            self.comboBox.addItem(filename[:len(filename)-4])
+
+    def showRelationship(self):
+        ind = self.comboBox.currentIndex()
+        dirname = os.listdir('./CharactersImages')
+        lis = []
+        for filename in dirname:
+            lis.append(filename)
+        img = QImage(f"./CharactersImages/{lis[ind]}")
+        pixmap = QPixmap.fromImage(img)
+        self.relationView.setPixmap(pixmap)
 
 
 def run():

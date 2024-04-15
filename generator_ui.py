@@ -16,11 +16,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWebEngineWidgets import QWebEngineView
-from PySide6.QtWidgets import (QApplication, QCheckBox, QDockWidget, QFrame,
-    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
-    QLabel, QLineEdit, QProgressBar, QPushButton,
-    QRadioButton, QSizePolicy, QSpacerItem, QTabWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDockWidget,
+    QFrame, QGridLayout, QGroupBox, QHBoxLayout,
+    QHeaderView, QLabel, QLineEdit, QProgressBar,
+    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+    QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
+    QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -473,6 +474,38 @@ class Ui_Form(object):
         self.horizontalLayout_17.addWidget(self.wcLabel)
 
         self.KGtabs.addTab(self.wordCloudsTable, "")
+        self.tab_4 = QWidget()
+        self.tab_4.setObjectName(u"tab_4")
+        self.horizontalLayout_20 = QHBoxLayout(self.tab_4)
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.widget_6 = QWidget(self.tab_4)
+        self.widget_6.setObjectName(u"widget_6")
+        self.widget_6.setMaximumSize(QSize(130, 16777215))
+        self.verticalLayout_16 = QVBoxLayout(self.widget_6)
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.comboBox = QComboBox(self.widget_6)
+        self.comboBox.setObjectName(u"comboBox")
+
+        self.verticalLayout_16.addWidget(self.comboBox)
+
+        self.btn_search = QPushButton(self.widget_6)
+        self.btn_search.setObjectName(u"btn_search")
+
+        self.verticalLayout_16.addWidget(self.btn_search)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_16.addItem(self.verticalSpacer_6)
+
+
+        self.horizontalLayout_20.addWidget(self.widget_6)
+
+        self.relationView = QLabel(self.tab_4)
+        self.relationView.setObjectName(u"relationView")
+
+        self.horizontalLayout_20.addWidget(self.relationView)
+
+        self.KGtabs.addTab(self.tab_4, "")
 
         self.horizontalLayout_14.addWidget(self.KGtabs)
 
@@ -588,10 +621,10 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(4)
         self.tabWidget_2.setCurrentIndex(1)
-        self.KGtabs.setCurrentIndex(0)
-        self.PaperTable.setCurrentIndex(0)
+        self.KGtabs.setCurrentIndex(2)
+        self.PaperTable.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -628,6 +661,9 @@ class Ui_Form(object):
         self.KGtabs.setTabText(self.KGtabs.indexOf(self.tab_8), QCoreApplication.translate("Form", u"Knowledge Graph", None))
         self.wcLabel.setText("")
         self.KGtabs.setTabText(self.KGtabs.indexOf(self.wordCloudsTable), QCoreApplication.translate("Form", u"Word Cloud", None))
+        self.btn_search.setText(QCoreApplication.translate("Form", u"search", None))
+        self.relationView.setText("")
+        self.KGtabs.setTabText(self.KGtabs.indexOf(self.tab_4), QCoreApplication.translate("Form", u"relationships", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.KGtab), QCoreApplication.translate("Form", u"HLM Analysis", None))
         self.btn_activPaper.setText(QCoreApplication.translate("Form", u"Activate", None))
         self.Paperlabel.setText(QCoreApplication.translate("Form", u"TextLabel", None))
