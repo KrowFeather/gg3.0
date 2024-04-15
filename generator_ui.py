@@ -590,8 +590,8 @@ class Ui_Form(object):
 
         self.tabWidget.setCurrentIndex(5)
         self.tabWidget_2.setCurrentIndex(1)
-        self.KGtabs.setCurrentIndex(1)
-        self.PaperTable.setCurrentIndex(1)
+        self.KGtabs.setCurrentIndex(0)
+        self.PaperTable.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Form)

@@ -28,6 +28,10 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
 
     def __init__(self):
         super().__init__()
+        self.paperThread = None
+        self.paperLauncher = None
+        self.hlmThread = None
+        self.hlmlauncher = None
         self.footerAnima = None
         self.sidebarAnima = None
         self.setupUi(self)
@@ -85,20 +89,6 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
         self.groupBox.setStyleSheet("QGroupBox:title{color:black;} QGroupBox{border-color:lightgray;}")
         self.webEngineView.setUrl('http://localhost:7474/browser')
         self.PaperKGView.setUrl('http://localhost:7474/browser')
-        self.hlmlauncher = HLMLauncher.HLMLauncher()
-        self.hlmThread = QThread()
-        self.hlmlauncher.progress.connect(self.updateProgress)
-        self.hlmlauncher.complete.connect(self.isComplete)
-        self.glob.connect(self.hlmlauncher.work)
-        self.hlmlauncher.moveToThread(self.hlmThread)
-        self.hlmThread.start()
-        self.paperLauncher = PaperLauncher.PaperLauncher()
-        self.paperThread = QThread()
-        self.paperLauncher.progress.connect(self.updatePaperProgress)
-        self.paperLauncher.complete.connect(self.isPaperComplete)
-        self.globPaper.connect(self.paperLauncher.work)
-        self.paperLauncher.moveToThread(self.paperThread)
-        self.paperThread.start()
 
         self.bind()
 
@@ -451,6 +441,14 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
             self.footerAnima.start()
 
     def activateHLM(self):
+        print("on")
+        self.hlmlauncher = HLMLauncher.HLMLauncher()
+        self.hlmThread = QThread()
+        self.hlmlauncher.progress.connect(self.updateProgress)
+        self.hlmlauncher.complete.connect(self.isComplete)
+        self.glob.connect(self.hlmlauncher.work)
+        self.hlmlauncher.moveToThread(self.hlmThread)
+        self.hlmThread.start()
         self.btn_activHLM.hide()
         self.HLMmaskinmask.show()
         n = 5
@@ -472,6 +470,10 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
                 self.loadingLabel.setText("")
 
     def isComplete(self, v):
+        self.PaperMask.show()
+        self.PaperTable.hide()
+        self.papermaskinmask.hide()
+        self.btn_activPaper.show()
         self.HLMprogressbar.setValue(v)
         self.HLmask.hide()
         self.KGtabs.show()
@@ -485,6 +487,13 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
         self.wcLabel.setPixmap(pixmap)
 
     def activatePaper(self):
+        self.paperLauncher = PaperLauncher.PaperLauncher()
+        self.paperThread = QThread()
+        self.paperLauncher.progress.connect(self.updatePaperProgress)
+        self.paperLauncher.complete.connect(self.isPaperComplete)
+        self.globPaper.connect(self.paperLauncher.work)
+        self.paperLauncher.moveToThread(self.paperThread)
+        self.paperThread.start()
         self.btn_activPaper.hide()
         self.papermaskinmask.show()
         n = 5
@@ -506,6 +515,10 @@ class Frame(QWidget, Ui_Form, multiprocessing.Process):
                 self.Paperlabel.setText("")
 
     def isPaperComplete(self, v):
+        self.HLmask.show()
+        self.KGtabs.hide()
+        self.btn_activHLM.show()
+        self.HLMmaskinmask.hide()
         self.PaperprogressBar.setValue(v)
         self.PaperScatterView.load(
             QUrl.fromLocalFile(os.path.abspath(f'./temp/plotly_scatter5.html')))
